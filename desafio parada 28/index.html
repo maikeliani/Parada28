@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel parada 28</title>
+    <style>
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          background-color: #f2f2f2;
+        }
+    
+        .carrossel {
+          width: 300px;
+          height: 200px;
+          overflow: hidden;
+          position: relative;
+        }
+    
+        .carrossel-inner {
+          width: 300%;
+          height: 100%;
+          display: flex;
+          transition: transform 0.5s;
+        }
+    
+        .carrossel-item {
+          flex: 0 0 33.33%;
+          height: 100%;
+        }
+    
+        .carrossel-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+    
+        .carrossel-nav {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          z-index: 1;
+        }
+    
+        .carrossel-nav button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 20px;
+          color: #000;
+        }
+      </style>
+</head>
+<body>
+    <div class="carrossel">
+        <div class="carrossel-inner">
+          <div class="carrossel-item">
+            <img src="./img/cachorro.webp" alt="Imagem 1">
+          </div>
+          <div class="carrossel-item">
+            <img src="./img/coelho.jpg" alt="Imagem 2">
+          </div>
+          <div class="carrossel-item">
+            <img src="./img/gato.jpg" alt="Imagem 3">
+          </div>
+        </div>
+        <div class="carrossel-nav">
+          <button id="prevBtn">&#10094;</button>
+          <button id="nextBtn">&#10095;</button>
+        </div>
+      </div>
+    
+      <script>
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const carrosselInner = document.querySelector('.carrossel-inner');
+    
+        let slideIndex = 0;
+    
+        prevBtn.addEventListener('click', () => {
+          slideIndex--;
+          updateCarrossel();
+        });
+    
+        nextBtn.addEventListener('click', () => {
+          slideIndex++;
+          updateCarrossel();
+        });
+    
+        function updateCarrossel() {
+          carrosselInner.style.transform = `translateX(-${slideIndex * 33.33}%)`;
+        }
+      </script>
+</body>
+</html>
